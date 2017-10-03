@@ -9,7 +9,6 @@
 
 #region Librerias
 using UnityEngine;
-using System.Collections.Generic;
 #endregion
 
 namespace MoonAntonio
@@ -27,11 +26,11 @@ namespace MoonAntonio
 		/// <summary>
 		/// <para>Estado actual</para>
 		/// </summary>
-		public Estado estadoActual;									// Estado actual
+		public Estado estadoActual;                                 // Estado actual
 		/// <summary>
-		/// <para>Lista de unidades</para>
+		/// <para>Unidad</para>
 		/// </summary>
-		public List<Unidad> unidades = new List<Unidad>();			// Lista de unidades
+		public Unidad unidad;										// Unidad
 		#endregion
 
 		#region Inicializadores
@@ -40,10 +39,9 @@ namespace MoonAntonio
 		/// </summary>
 		private void Start()// Inicializa MaquinaEstados
 		{
-			GameObject go = Instantiate(new GameObject());
-			go.transform.name = "Unidades";
-			go.transform.parent = this.transform;
-			GenerarUnidades(go.transform);
+			// Inicializar variables
+			unidad = this.GetComponent<Unidad>();
+			estadoActual = new EstadoInit(this);
 		}
 		#endregion
 
@@ -53,6 +51,8 @@ namespace MoonAntonio
 		/// </summary>
 		private void Update()// Actualizador de MaquinaEstados
 		{
+			unidad.Cuenta++;
+			estadoActual.Ejecutando();
 		}
 		#endregion
 
@@ -67,17 +67,6 @@ namespace MoonAntonio
 			estadoAnterior.Salir();
 			estadoActual = newEstado;
 			estadoActual.Entrar();
-		}
-		#endregion
-
-		#region Funcionalidad
-		/// <summary>
-		/// <para>Genera unidades aleatoriamente</para>
-		/// </summary>
-		/// <param name="root">Root de las unidades</param>
-		private void GenerarUnidades(Transform root)// Genera unidades aleatoriamente
-		{
-
 		}
 		#endregion
 	}

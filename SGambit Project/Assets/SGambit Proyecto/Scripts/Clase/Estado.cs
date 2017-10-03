@@ -38,6 +38,7 @@ namespace MoonAntonio
 		#endregion
 
 		#region Metodos Eventos
+		public virtual void Ejecutando() { }
 		public virtual void Entrar() { }
 		public virtual void Salir() { }
 		#endregion
