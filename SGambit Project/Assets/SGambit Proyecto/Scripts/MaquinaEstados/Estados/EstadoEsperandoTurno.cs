@@ -28,19 +28,22 @@ namespace MoonAntonio
 		#region Eventos
 		public override void Entrar()
 		{
-			Debug.Log(Maquina.name + " Iniciando");
-
+			Debug.Log(Maquina.name + " Esperando turno");
 		}
 
 		public override void Ejecutando()
 		{
-			Debug.Log(Maquina.name + " Iniciado");
+			Maquina.unidad.Cuenta++;
 
+			if (Maquina.unidad.Cuenta >= Maquina.unidad.CuentaMax)
+			{
+				Maquina.CambiarEstado(new EstadoComprobarGambit(Maquina));
+			}
 		}
 
 		public override void Salir()
 		{
-			Debug.Log("Saliendo de Init");
+			Debug.Log(Maquina.name + " Saliendo de Esperando Turno");
 		}
 		#endregion
 	}

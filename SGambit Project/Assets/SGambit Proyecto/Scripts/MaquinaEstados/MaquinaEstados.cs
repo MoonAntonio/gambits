@@ -20,17 +20,20 @@ namespace MoonAntonio
 	{
 		#region Variables Publicas
 		/// <summary>
+		/// <para>Unidad</para>
+		/// </summary>
+		public Unidad unidad;                                       // Unidad
+		#endregion
+
+		#region Variables Privadas
+		/// <summary>
 		/// <para>Estado anterior</para>
 		/// </summary>
-		public Estado estadoAnterior;								// Estado anterior
+		private Estado estadoAnterior;								// Estado anterior
 		/// <summary>
 		/// <para>Estado actual</para>
 		/// </summary>
-		public Estado estadoActual;                                 // Estado actual
-		/// <summary>
-		/// <para>Unidad</para>
-		/// </summary>
-		public Unidad unidad;										// Unidad
+		private Estado estadoActual;                                 // Estado actual
 		#endregion
 
 		#region Inicializadores
@@ -51,7 +54,6 @@ namespace MoonAntonio
 		/// </summary>
 		private void Update()// Actualizador de MaquinaEstados
 		{
-			unidad.Cuenta++;
 			estadoActual.Ejecutando();
 		}
 		#endregion
@@ -64,7 +66,7 @@ namespace MoonAntonio
 		public void CambiarEstado(Estado newEstado)// Cambia el estado
 		{
 			estadoAnterior = estadoActual;
-			estadoAnterior.Salir();
+			estadoActual.Salir();
 			estadoActual = newEstado;
 			estadoActual.Entrar();
 		}

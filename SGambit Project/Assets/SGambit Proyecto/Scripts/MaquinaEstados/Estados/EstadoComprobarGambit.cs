@@ -28,18 +28,18 @@ namespace MoonAntonio
 		#region Eventos
 		public override void Entrar()
 		{
-			Debug.Log(Maquina.name + " Iniciando");
+			Debug.Log(Maquina.name + " Comprobando gambits");
 
 		}
 
 		public override void Ejecutando()
 		{
-			Debug.Log(Maquina.name + " Iniciado");
+			
 		}
 
 		public override void Salir()
 		{
-			Debug.Log("Saliendo de Init");
+			Debug.Log("Saliendo de la comprobacion");
 		}
 		#endregion
 	}
