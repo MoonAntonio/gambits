@@ -21,10 +21,16 @@ namespace MoonAntonio
 	public class Unidad : MonoBehaviour
 	{
 		#region Variables Publicas
+		public List<Gambit> gambits = new List<Gambit>();
+
+		public List<int> prioridad = new List<int>();
+
+
+		public List<string> condicion = new List<string>();
 		/// <summary>
 		/// <para>Magias de la unidad</para>
 		/// </summary>
-		public List<string> magias = new List<string>();			// Magias de la unidad
+		public List<string> magias = new List<string>();            // Magias de la unidad
 		#endregion
 
 		#region Variables Privadas

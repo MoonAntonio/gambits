@@ -49,7 +49,7 @@ namespace MoonAntonio
 		/// <summary>
 		/// <para>Root de la UI de los gambits.</para>
 		/// </summary>
-		public List<Transform> rootUIGambits = new List<Transform>();	// Root de la UI de los gambits
+		public List<Transform> uiGambits = new List<Transform>();		// Root de la UI de los gambits
 		#endregion
 
 		#region Inicializadores
@@ -127,11 +127,15 @@ namespace MoonAntonio
 				// BUG No aparece en el inspector, pero si se agrega
 				goUI.GetComponent<Button>().onClick.AddListener(() => { AbrirInterfazUnidad(n); });
 
-				// Agregar UI Gambit
-				//GameObject goGUI = Instantiate();
-
 				// Generar Gambits
 				GenerarGambits(n);
+
+				// Agregar UI Gambit
+				GameObject goGUIContenedor = Instantiate(prefabUIContenedor);
+				goGUIContenedor.transform.parent = rootUIGambit.transform;
+				goGUIContenedor.name = "Gambit Contenedor " + n;
+
+
 
 				// Cerrar paneles
 				CerrarPaneles();
@@ -144,7 +148,18 @@ namespace MoonAntonio
 		/// <param name="id">ID de la unidad.</param>
 		private void GenerarGambits(int id)// Genera los gambits de la unidad
 		{
+			Unidad uni = unidades[id].GetComponent<Unidad>();
+			unidades[id].gameObject.AddComponent<Gambit>();
+			float magMax = uni.magias.Count;
 
+			for (int n = 0; n < uni.magias.Count; n++)
+			{
+				switch (uni.magias[n])
+				{
+					case "":
+						break;
+				}
+			}
 		}
 
 		/// <summary>
@@ -152,7 +167,7 @@ namespace MoonAntonio
 		/// </summary>
 		private void CerrarPaneles()// Cierra los paneles
 		{
-			foreach (Transform go in rootUIGambits)
+			foreach (Transform go in uiGambits)
 			{
 				go.GetComponent<CanvasGroup>().alpha = 0;
 			}
@@ -164,7 +179,7 @@ namespace MoonAntonio
 		/// <param name="id">ID del panel a abrir.</param>
 		private void AbrirPanel(int id)// Abre el panel indicado
 		{
-			rootUIGambits[id - 1].GetComponent<CanvasGroup>().alpha = 1;
+			uiGambits[id - 1].GetComponent<CanvasGroup>().alpha = 1;
 		}
 		#endregion
 
