@@ -17,6 +17,7 @@ namespace MoonAntonio
 	/// <summary>
 	/// <para>Clase base de Unidad</para>
 	/// </summary>
+	[System.Serializable]
 	public class Unidad : MonoBehaviour
 	{
 		#region Variables Publicas

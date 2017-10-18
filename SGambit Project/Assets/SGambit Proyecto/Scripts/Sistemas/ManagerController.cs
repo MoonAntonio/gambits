@@ -29,11 +29,23 @@ namespace MoonAntonio
 		/// <summary>
 		/// <para>Prefab del boton</para>
 		/// </summary>
-		public GameObject prefabBtnUnidad;								// Prefab del boton
+		public GameObject prefabBtnUnidad;                              // Prefab del boton
+		/// <summary>
+		/// <para>Prefab del contenedor de los gambits.</para>
+		/// </summary>
+		public GameObject prefabUIContenedor;							// Prefab del contenedor de los gambits
+		/// <summary>
+		/// <para>Prefab del gambit.</para>
+		/// </summary>
+		public GameObject prefabUIGambit;                               // Prefab del gambit
 		/// <summary>
 		/// <para>Root de la UI de las unidades.</para>
 		/// </summary>
-		public Transform rootUIUnidades;								// Root de la UI de las unidades
+		public Transform rootUIUnidades;                                // Root de la UI de las unidades
+		/// <summary>
+		/// <para>Root de la UI del gambit.</para>
+		/// </summary>
+		public Transform rootUIGambit;									// Root de la UI del gambit
 		/// <summary>
 		/// <para>Root de la UI de los gambits.</para>
 		/// </summary>
@@ -79,9 +91,6 @@ namespace MoonAntonio
 			// Obtener unidades totales del escenario
 			int unidadesTotales = Random.Range(2, 10);
 
-			Debug.Log("Unidades en Stock: " + unidadesTotales);
-			Debug.Log("|----------------------|");
-
 			// Generar unidades
 			for (int n = 0; n < unidadesTotales; n++)
 			{
@@ -118,13 +127,14 @@ namespace MoonAntonio
 				// BUG No aparece en el inspector, pero si se agrega
 				goUI.GetComponent<Button>().onClick.AddListener(() => { AbrirInterfazUnidad(n); });
 
+				// Agregar UI Gambit
+				//GameObject goGUI = Instantiate();
+
 				// Generar Gambits
 				GenerarGambits(n);
 
 				// Cerrar paneles
 				CerrarPaneles();
-
-				Debug.Log("Generada " + go.transform.name);
 			}
 		}
 
