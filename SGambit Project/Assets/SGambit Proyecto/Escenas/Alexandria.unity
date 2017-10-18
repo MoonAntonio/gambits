@@ -141,43 +141,7 @@ MonoBehaviour:
   prefabBtnUnidad: {fileID: 1239825948557176, guid: 0098306350b58b2488597e85b3e8b4dd,
     type: 2}
   rootUIUnidades: {fileID: 354110122}
-  prefabElemento: {fileID: 1326583632133754, guid: 741256e0d0d105c4fa11844535065bcc,
-    type: 2}
-  rootElementos:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  Condiciones:
-  - EnemigoVida>100%
-  - EnemigoVida>90%
-  - EnemigoVida>80%
-  - EnemigoVida>70%
-  - EnemigoVida>60%
-  - EnemigoVida>50%
-  - EnemigoVida>40%
-  - EnemigoVida>30%
-  - EnemigoVida>20%
-  - EnemigoVida>10%
-  - UnoMismoVida>100%
-  - UnoMismoVida>90%
-  - UnoMismoVida>80%
-  - UnoMismoVida>70%
-  - UnoMismoVida>60%
-  - UnoMismoVida>50%
-  - UnoMismoVida>40%
-  - UnoMismoVida>30%
-  - UnoMismoVida>20%
-  - UnoMismoVida>10%
-  Acciones: []
-  panelesElementos: []
+  rootUIGambits: []
 --- !u!4 &67681160
 Transform:
   m_ObjectHideFlags: 0
@@ -567,7 +531,8 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1696607266}
   m_Father: {fileID: 874733339}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -664,6 +629,39 @@ Transform:
   m_Father: {fileID: 204031648}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &1696607265
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1696607266}
+  m_Layer: 5
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1696607266
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1696607265}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1527121949}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2113402286
 GameObject:
   m_ObjectHideFlags: 0

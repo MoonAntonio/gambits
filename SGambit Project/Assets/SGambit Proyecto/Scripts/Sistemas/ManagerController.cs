@@ -17,7 +17,7 @@ using System.Collections.Generic;
 namespace MoonAntonio
 {
 	/// <summary>
-	/// <para>Manager del sistema	</para>
+	/// <para>Manager del sistema.</para>
 	/// </summary>
 	public class ManagerController : MonoBehaviour 
 	{
@@ -25,33 +25,26 @@ namespace MoonAntonio
 		/// <summary>
 		/// <para>Lista de unidades</para>
 		/// </summary>
-		public List<Unidad> unidades = new List<Unidad>();          // Lista de unidades
+		public List<Unidad> unidades = new List<Unidad>();				// Lista de unidades
 		/// <summary>
 		/// <para>Prefab del boton</para>
 		/// </summary>
-		public GameObject prefabBtnUnidad;                          // Prefab del boton
+		public GameObject prefabBtnUnidad;								// Prefab del boton
 		/// <summary>
 		/// <para>Root de la UI de las unidades.</para>
 		/// </summary>
-		public Transform rootUIUnidades;// Root de la UI de las unidades
-
-		public GameObject prefabElemento;
-
-		public List<Transform> rootElementos = new List<Transform>();
-
-		public List<string> Condiciones = new List<string>();
-
-		public List<string> Acciones = new List<string>();
-
-		public List<GameObject> panelesElementos = new List<GameObject>();
+		public Transform rootUIUnidades;								// Root de la UI de las unidades
+		/// <summary>
+		/// <para>Root de la UI de los gambits.</para>
+		/// </summary>
+		public List<Transform> rootUIGambits = new List<Transform>();	// Root de la UI de los gambits
 		#endregion
-
 
 		#region Inicializadores
 		/// <summary>
-		/// <para>Inicializa <see cref="MaquinaEstados"/>.</para>
+		/// <para>Inicializa <see cref="ManagerController"/>.</para>
 		/// </summary>
-		private void Start()// Inicializa MaquinaEstados
+		private void Start()// Inicializa ManagerController
 		{
 			// Generar root de unidades
 			GameObject go = new GameObject();
@@ -59,11 +52,24 @@ namespace MoonAntonio
 			go.transform.name = "Unidades";
 
 			// Generar unidades
-			//GenerarUnidades(go.transform);
+			GenerarUnidades(go.transform);
 		}
 		#endregion
 
-		#region Metodos
+		#region Metodos Publicos
+		/// <summary>
+		/// <para>Abre la interfaz de la unidad.</para>
+		/// </summary>
+		/// <param name="n">ID de la unidad.</param>
+		public void AbrirInterfazUnidad(int n)// Abre la interfaz de la unidad
+		{
+			Debug.Log(n);
+			CerrarPaneles();
+			AbrirPanel(n);
+		}
+		#endregion
+
+		#region Metodos Privados
 		/// <summary>
 		/// <para>Genera unidades aleatoriamente</para>
 		/// </summary>
@@ -74,15 +80,13 @@ namespace MoonAntonio
 			int unidadesTotales = Random.Range(2, 10);
 
 			Debug.Log("Unidades en Stock: " + unidadesTotales);
+			Debug.Log("|----------------------|");
 
 			// Generar unidades
 			for (int n = 0; n < unidadesTotales; n++)
 			{
-				// Limpiar listas
-				Acciones.Clear();
-
 				// Instanciacion
-				GameObject go = Instantiate(new GameObject());
+				GameObject go = new GameObject();
 				go.transform.name = "Unidad" + n;
 				go.transform.parent = root;
 				go.AddComponent<MaquinaEstados>();
@@ -100,7 +104,6 @@ namespace MoonAntonio
 
 				// Generar Magias
 				go.GetComponent<Unidad>().magias = GetMagias(Random.Range(0, 4));
-				Acciones = go.GetComponent<Unidad>().magias;
 
 				// Agregar a la lista
 				unidades.Add(go.GetComponent<Unidad>());
@@ -116,7 +119,7 @@ namespace MoonAntonio
 				goUI.GetComponent<Button>().onClick.AddListener(() => { AbrirInterfazUnidad(n); });
 
 				// Generar Gambits
-				GenerarOpciones(n);
+				GenerarGambits(n);
 
 				// Cerrar paneles
 				CerrarPaneles();
@@ -125,30 +128,33 @@ namespace MoonAntonio
 			}
 		}
 
-		public void GenerarOpciones(int id)
+		/// <summary>
+		/// <para>Genera los gambits de la unidad.</para>
+		/// </summary>
+		/// <param name="id">ID de la unidad.</param>
+		private void GenerarGambits(int id)// Genera los gambits de la unidad
 		{
-			
+
 		}
 
-		public void AbrirInterfazUnidad(int n)
+		/// <summary>
+		/// <para>Cierra los paneles.</para>
+		/// </summary>
+		private void CerrarPaneles()// Cierra los paneles
 		{
-			Debug.Log(n);
-			CerrarPaneles();
-			AbrirPanel(n);
-		}
-
-		public void CerrarPaneles()
-		{
-			foreach (Transform go in rootElementos)
+			foreach (Transform go in rootUIGambits)
 			{
 				go.GetComponent<CanvasGroup>().alpha = 0;
 			}
 		}
 
-		public void AbrirPanel(int id)
+		/// <summary>
+		/// <para>Abre el panel indicado.</para>
+		/// </summary>
+		/// <param name="id">ID del panel a abrir.</param>
+		private void AbrirPanel(int id)// Abre el panel indicado
 		{
-			Debug.Log(id);
-			rootElementos[id-1].GetComponent<CanvasGroup>().alpha = 1;
+			rootUIGambits[id - 1].GetComponent<CanvasGroup>().alpha = 1;
 		}
 		#endregion
 
