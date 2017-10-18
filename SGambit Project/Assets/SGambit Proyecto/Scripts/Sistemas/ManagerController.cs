@@ -127,24 +127,7 @@ namespace MoonAntonio
 
 		public void GenerarOpciones(int id)
 		{
-			for (int n = 0; n < Acciones.Count; n++)
-			{
-				// Agregar gambits
-				GameObject goEle = Instantiate(prefabElemento);
-				goEle.transform.parent = rootElementos[n].transform;
-
-				// Setup Gambit
-				Elemento elemento = goEle.GetComponent<Elemento>();
-				elemento.estadoElemento = EstadoElemento.ON;
-				elemento.txtID.text = id.ToString();
-				elemento.dropEstado.value = 0;
-				elemento.dropAccion.ClearOptions();
-				elemento.dropAccion.AddOptions(Acciones);
-				elemento.dropCondicion.ClearOptions();
-				elemento.dropCondicion.AddOptions(Condiciones);
-
-				panelesElementos.Add(goEle);
-			}
+			
 		}
 
 		public void AbrirInterfazUnidad(int n)
