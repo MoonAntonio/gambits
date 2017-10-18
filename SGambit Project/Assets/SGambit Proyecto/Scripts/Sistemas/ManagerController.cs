@@ -54,12 +54,12 @@ namespace MoonAntonio
 		private void Start()// Inicializa MaquinaEstados
 		{
 			// Generar root de unidades
-			GameObject go = Instantiate(new GameObject());
-			go.transform.name = "Unidades";
+			GameObject go = new GameObject();
 			go.transform.parent = this.transform;
+			go.transform.name = "Unidades";
 
 			// Generar unidades
-			GenerarUnidades(go.transform);
+			//GenerarUnidades(go.transform);
 		}
 		#endregion
 
