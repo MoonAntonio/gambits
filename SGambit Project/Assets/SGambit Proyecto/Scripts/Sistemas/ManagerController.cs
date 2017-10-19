@@ -49,7 +49,9 @@ namespace MoonAntonio
 		/// <summary>
 		/// <para>Root de la UI de los gambits.</para>
 		/// </summary>
-		public List<Transform> uiGambits = new List<Transform>();		// Root de la UI de los gambits
+		public List<Transform> uiGambits = new List<Transform>();       // Root de la UI de los gambits
+		public List<string> listaCondiciones = new List<string>();
+		public List<string> listaAcciones = new List<string>();
 		#endregion
 
 		#region Inicializadores
@@ -75,7 +77,6 @@ namespace MoonAntonio
 		/// <param name="n">ID de la unidad.</param>
 		public void AbrirInterfazUnidad(int n)// Abre la interfaz de la unidad
 		{
-			Debug.Log(n);
 			CerrarPaneles();
 			AbrirPanel(n);
 		}
@@ -125,6 +126,8 @@ namespace MoonAntonio
 
 				// Agregar evento
 				// BUG No aparece en el inspector, pero si se agrega
+				goUI.GetComponent<Button>().onClick.RemoveAllListeners();
+				//goUI.GetComponent<Button>().onClick.AddListener(() => AbrirInterfazUnidad(n));
 				goUI.GetComponent<Button>().onClick.AddListener(() => { AbrirInterfazUnidad(n); });
 
 				// Generar Gambits
@@ -134,8 +137,19 @@ namespace MoonAntonio
 				GameObject goGUIContenedor = Instantiate(prefabUIContenedor);
 				goGUIContenedor.transform.parent = rootUIGambit.transform;
 				goGUIContenedor.name = "Gambit Contenedor " + n;
+				uiGambits.Add(goGUIContenedor.transform);
 
-
+				// Agregar Gambit
+				for (int i = 0; i < unidades[n].GetComponent<Unidad>().gambits.Count; i++)
+				{
+					GameObject gambit = Instantiate(prefabUIGambit);
+					gambit.transform.parent = goGUIContenedor.transform;
+					gambit.GetComponent<UIGambit>().condicion = unidades[n].GetComponent<Unidad>().gambits[i].condicion;
+					gambit.GetComponent<UIGambit>().prioridad = unidades[n].GetComponent<Unidad>().gambits[i].prioridad;
+					gambit.GetComponent<UIGambit>().accion = unidades[n].GetComponent<Unidad>().gambits[i].accion;
+					gambit.GetComponent<UIGambit>().listaAcciones = listaAcciones;
+					gambit.GetComponent<UIGambit>().listaCondiciones = listaCondiciones;
+				}
 
 				// Cerrar paneles
 				CerrarPaneles();

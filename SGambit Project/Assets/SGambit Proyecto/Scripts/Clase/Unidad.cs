@@ -22,11 +22,6 @@ namespace MoonAntonio
 	{
 		#region Variables Publicas
 		public List<Gambit> gambits = new List<Gambit>();
-
-		public List<int> prioridad = new List<int>();
-
-
-		public List<string> condicion = new List<string>();
 		/// <summary>
 		/// <para>Magias de la unidad</para>
 		/// </summary>

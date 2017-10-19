@@ -34,7 +34,7 @@ namespace MoonAntonio
 
 		public override void Ejecutando()
 		{
-			
+			//this.gameObject.GetComponent<Unidad>().gambits;
 		}
 
 		public override void Salir()
