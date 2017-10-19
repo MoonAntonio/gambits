@@ -156,7 +156,20 @@ namespace MoonAntonio
 			{
 				switch (uni.magias[n])
 				{
-					case "":
+					case "Atacar":
+						Gambit gambit = new Gambit();
+						gambit.prioridad = n;
+						gambit.condicion = "Si enemigo vivo";
+						gambit.accion = "Atacar";
+						uni.gambits.Add(gambit);
+						break;
+
+					case "Cura":
+						Gambit gambit2 = new Gambit();
+						gambit2.prioridad = n;
+						gambit2.condicion = "Si vida < 20%";
+						gambit2.accion = "Cura";
+						uni.gambits.Add(gambit2);
 						break;
 				}
 			}
