@@ -9,7 +9,6 @@
 
 #region Librerias
 using UnityEngine;
-using System.Collections.Generic;
 #endregion
 
 namespace MoonAntonio
@@ -21,17 +20,20 @@ namespace MoonAntonio
 	{
 		#region Variables Publicas
 		/// <summary>
+		/// <para>Unidad</para>
+		/// </summary>
+		public Unidad unidad;                                       // Unidad
+		#endregion
+
+		#region Variables Privadas
+		/// <summary>
 		/// <para>Estado anterior</para>
 		/// </summary>
-		public Estado estadoAnterior;								// Estado anterior
+		private Estado estadoAnterior;								// Estado anterior
 		/// <summary>
 		/// <para>Estado actual</para>
 		/// </summary>
-		public Estado estadoActual;									// Estado actual
-		/// <summary>
-		/// <para>Lista de unidades</para>
-		/// </summary>
-		public List<Unidad> unidades = new List<Unidad>();			// Lista de unidades
+		private Estado estadoActual;                                 // Estado actual
 		#endregion
 
 		#region Inicializadores
@@ -40,10 +42,9 @@ namespace MoonAntonio
 		/// </summary>
 		private void Start()// Inicializa MaquinaEstados
 		{
-			GameObject go = Instantiate(new GameObject());
-			go.transform.name = "Unidades";
-			go.transform.parent = this.transform;
-			GenerarUnidades(go.transform);
+			// Inicializar variables
+			unidad = this.GetComponent<Unidad>();
+			estadoActual = new EstadoInit(this);
 		}
 		#endregion
 
@@ -53,6 +54,7 @@ namespace MoonAntonio
 		/// </summary>
 		private void Update()// Actualizador de MaquinaEstados
 		{
+			estadoActual.Ejecutando();
 		}
 		#endregion
 
@@ -64,20 +66,9 @@ namespace MoonAntonio
 		public void CambiarEstado(Estado newEstado)// Cambia el estado
 		{
 			estadoAnterior = estadoActual;
-			estadoAnterior.Salir();
+			estadoActual.Salir();
 			estadoActual = newEstado;
 			estadoActual.Entrar();
-		}
-		#endregion
-
-		#region Funcionalidad
-		/// <summary>
-		/// <para>Genera unidades aleatoriamente</para>
-		/// </summary>
-		/// <param name="root">Root de las unidades</param>
-		private void GenerarUnidades(Transform root)// Genera unidades aleatoriamente
-		{
-
 		}
 		#endregion
 	}

@@ -17,13 +17,15 @@ namespace MoonAntonio
 	/// <summary>
 	/// <para>Clase base de Unidad</para>
 	/// </summary>
-	public class Unidad : MonoBehaviour 
+	[System.Serializable]
+	public class Unidad : MonoBehaviour
 	{
 		#region Variables Publicas
+		public List<Gambit> gambits = new List<Gambit>();
 		/// <summary>
 		/// <para>Magias de la unidad</para>
 		/// </summary>
-		public List<string> magias = new List<string>();			// Magias de la unidad
+		public List<string> magias = new List<string>();            // Magias de la unidad
 		#endregion
 
 		#region Variables Privadas
@@ -50,7 +52,15 @@ namespace MoonAntonio
 		/// <summary>
 		/// <para>Determina si la unidad esta envenenada.</para>
 		/// </summary>
-		private bool isEnvenenado;									// Determina si la unidad esta envenenada
+		private bool isEnvenenado;                                  // Determina si la unidad esta envenenada
+		/// <summary>
+		/// <para>Cuenta maxima.</para>
+		/// </summary>
+		private int cuentaMax;										// Cuenta maxima
+		/// <summary>
+		/// <para>Cuenta actual para actuar.</para>
+		/// </summary>
+		private int cuenta;											// Cuenta actual para actuar
 		#endregion
 
 		#region Propiedades
@@ -106,6 +116,24 @@ namespace MoonAntonio
 		{
 			get { return isEnvenenado; }
 			set { isEnvenenado = value; }
+		}
+
+		/// <summary>
+		/// <para>Cuenta maxima</para>
+		/// </summary>
+		public int CuentaMax
+		{
+			get { return cuentaMax; }
+			set { cuentaMax = value; }
+		}
+
+		/// <summary>
+		/// <para>Cuenta actual para actuar.</para>
+		/// </summary>
+		public int Cuenta
+		{
+			get { return cuenta; }
+			set { cuenta = value; }
 		}
 		#endregion
 	}

@@ -13,11 +13,10 @@ using UnityEngine;
 
 namespace MoonAntonio
 {
-	[System.Serializable]
 	/// <summary>
 	/// <para>Clase base de estado</para>
 	/// </summary>
-	public class Estado : MonoBehaviour
+	public abstract class Estado : MonoBehaviour
 	{
 		#region Variables Publicas
 		/// <summary>
@@ -38,6 +37,7 @@ namespace MoonAntonio
 		#endregion
 
 		#region Metodos Eventos
+		public virtual void Ejecutando() { }
 		public virtual void Entrar() { }
 		public virtual void Salir() { }
 		#endregion
