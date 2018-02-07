@@ -1,7 +1,6 @@
 # S.Gambits
 
-
-## Acreditaciones
+Desactualizado
 
 Logo : [@freepik][1]
 
