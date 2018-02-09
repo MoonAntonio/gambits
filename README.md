@@ -1,6 +1,6 @@
 # S.Gambits
 
-Desactualizado
+Desactualizado ...
 
 Logo : [@freepik][1]
 
